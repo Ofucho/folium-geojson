@@ -8,19 +8,19 @@ map = folium.Map(location=[-1.1993409323259936, 36.838099528619956], zoom_start=
 fgs = folium.FeatureGroup(name="Surface Type")
 
 # Add a GeoJSON layer to the 'Surface Type' FeatureGroup with a style function that colors features red if their surface type is 'Gravel', 'Earth', or 'Track', and green otherwise
-# fgs.add_child(folium.GeoJson('Road.json', name="geojson",
-#                              style_function=lambda x: {
-#                                  'color': 'red' if x['properties']['CWSurfType'] == 'Gravel' and 'Earth' and 'Track'
-#                                  else 'green'}))
+fgs.add_child(folium.GeoJson('Road.json', name="geojson",
+                             style_function=lambda x: {
+                                 'color': 'red' if x['properties']['CWSurfType'] == 'Gravel' and 'Earth' and 'Track'
+                                 else 'green'}))
 
 # Create a FeatureGroup object called 'Surface Condition'
 fgc = folium.FeatureGroup(name="Surface Condition")
 
 # Add a GeoJSON layer to the 'Surface Condition' FeatureGroup with a style function that colors features green if their surface condition is 'Good', orange if it is 'Fair', and red otherwise
-# fgc.add_child(folium.GeoJson('Road.json', name="geojson",
-#                              style_function=lambda x: {
-#                                  'color': 'green' if x['properties']['CWSurfCond'] == 'Good'
-#                                  else 'orange' if x['properties']['CWSurfCond'] == 'Fair' else 'red'}))
+fgc.add_child(folium.GeoJson('Road.json', name="geojson",
+                             style_function=lambda x: {
+                                 'color': 'green' if x['properties']['CWSurfCond'] == 'Good'
+                                 else 'orange' if x['properties']['CWSurfCond'] == 'Fair' else 'red'}))
 
 # Add the 'Surface Type' and 'Surface Condition' FeatureGroups to the map
 map.add_child(fgs)
